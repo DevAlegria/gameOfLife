@@ -25,10 +25,11 @@ public class App {
 
             nextGeneration.getNextGeneration(neigborhood);
             generationsList.add(nextGeneration);
-            ui.printState(0, game.getWidth() + "x" + game.getHeight(), i + 1, game.getGenerations(), game.getSpeed(),
+            ui.printState(nextGeneration.countLives(), game.getWidth() + "x" + game.getHeight(), i + 1,
+                    game.getGenerations(), game.getSpeed(),
                     game.getNeighborhood());
             ui.print(nextGeneration.getGeneration());
-
+            if(nextGeneration.countLives() == 0) break;
             i++;
         }
     }

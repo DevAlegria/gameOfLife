@@ -90,7 +90,23 @@ public class Generation {
     return generationStr.toString();
   }
 
-  
+  public int countLives() {
+    int lives = 0;
+    for (int i = 0; i < generation.length / 2; i++) {
+      for (int j = 0; j < generation[i].length / 2; j++) {
+        if (generation[i][j])
+          lives++;
+        if (generation[generation.length - (i + 1)][j])
+          lives++;
+        if (generation[i][generation[i].length - (j + 1)])
+          lives++;
+        if (generation[generation.length - (i + 1)][generation[i].length - (j + 1)])
+          lives++;
+      }
+    }
+    return lives;
+  }
+
   public boolean[][] getGenerationArray() {
     return this.generation;
   }
