@@ -51,6 +51,15 @@ public class UserInterface {
     this.printPopulationStatus(population);
   }
 
+  public void printState(int lives, String board, int currentGeneration, int generations, int speed, int neighborhood) {
+    System.out.println("STATUS");
+    System.out.println(
+        "Lives: " + lives + "\tGeneration: " + currentGeneration + (generations > 0 ? " of " + generations : ""));
+    System.out.println("Board: " + board + "\tSpeed: " + speed);
+    System.out.println("Neigborhood: " + Params.getNeighborhoodName(neighborhood));
+    System.out.println();
+  }
+
   public void printVariableStatus(String name, int value, boolean condition, String text) {
     String status = String.valueOf(value);
     if (condition)

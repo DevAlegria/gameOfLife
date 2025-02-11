@@ -2,7 +2,7 @@ import java.util.*;
 
 public class App {
     public static void main(String[] args) throws InterruptedException {
-
+        UserInterface ui = new UserInterface();
         ConfigGoL game = new ConfigGoL();
         game.setConfig();
 
@@ -19,14 +19,17 @@ public class App {
 
         int i = 0;
         while (i < game.getGenerations() || game.getGenerations() == 0) {
+            Thread.sleep(game.getSpeed());
             Generation nextGeneration = new Generation(
                     generationsList.get(generationsList.size() - 1).getGenerationArray());
 
             nextGeneration.getNextGeneration(neigborhood);
             generationsList.add(nextGeneration);
-            System.out.println(nextGeneration.getGeneration());
+            ui.printState(0, game.getWidth() + "x" + game.getHeight(), i + 1, game.getGenerations(), game.getSpeed(),
+                    game.getNeighborhood());
+            ui.print(nextGeneration.getGeneration());
+
             i++;
-            Thread.sleep(game.getSpeed());
         }
     }
 }

@@ -18,7 +18,7 @@ public class Generation {
         boolean current = this.generation[i][j];
         int lives = 0;
         for (int[] neigbor : neigborhood.getNeigbors()) {
-          //[[-1,0],[-1,1]]
+          // [[-1,0],[-1,1]]
 
           int x = i + neigbor[0];
           int y = j + neigbor[1];
@@ -35,7 +35,7 @@ public class Generation {
           if (lives > 3 || lives < 2) {
             current = false;
           }
-          
+
         } else {
           if (lives == 3) {
             current = true;
@@ -90,6 +90,7 @@ public class Generation {
     return generationStr.toString();
   }
 
+  
   public boolean[][] getGenerationArray() {
     return this.generation;
   }
