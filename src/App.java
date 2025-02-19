@@ -10,6 +10,8 @@ public class App {
         Generation generation = new Generation(null);
         generation.createStartGeneration(configGoL.getWidth(), configGoL.getHeight(), configGoL.getPopulation());
         generationsList.add(generation);
+
+        ui.print("\nInitial Population");
         ui.print(generation.getGeneration());
 
         int i = 0;

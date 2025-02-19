@@ -40,14 +40,14 @@ public class UserInterface {
     return "-2";
   }
 
-  public void printStatus(int width, int height, int generations, int speed, Neighborhood neighborhood,
+  public void printStatus(int width, int height, int generations, int speed, String neighborhood,
       String population) {
     System.out.println("Intial Status App");
     this.printVariableStatus(" > Width", width, false, null);
     this.printVariableStatus(" > height", height, false, null);
     this.printVariableStatus(" > Generations", generations, generations == 0, "Infinity");
     this.printVariableStatus(" > Speed", speed, false, null);
-    this.print(" > Neighborhood" + neighborhood.getName());
+    this.printVariableStatus(" > Neighborhood", 0, true, neighborhood);
     this.printPopulationStatus(population);
   }
 

@@ -8,6 +8,10 @@ public class Neighborhood {
   Neighborhood(String name) {
     this.name = name;
   }
+  Neighborhood(String name, String neighborhood) {
+    this.name = name;
+    this.setNeigbors(neighborhood);
+  }
 
   public List<int[]> getNeigbors() {
     return neighbors;
