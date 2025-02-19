@@ -1,0 +1,32 @@
+# Archivos y carpetas de compilación
+*.class
+*.jar
+*.war
+*.ear
+target/
+bin/
+out/
+
+# Archivos de configuración de IDEs
+.vscode/
+.idea/
+*.iml
+
+# Archivos de compiladores o entornos
+*.log
+*.tmp
+*.bak
+*.swp
+
+# Archivos de dependencias (para Maven, Gradle, etc.)
+.mvn/
+.gradle/
+build/
+
+# Archivos de configuración de sistemas
+.DS_Store
+Thumbs.db
+
+# Archivos de dependencias en caso de ser necesario
+/.idea/
+/*.iml
