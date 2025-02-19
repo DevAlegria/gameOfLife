@@ -8,9 +8,10 @@ public class Neighborhood {
   Neighborhood(String name) {
     this.name = name;
   }
+
   Neighborhood(String name, String neighborhood) {
     this.name = name;
-    this.setNeigbors(neighborhood);
+    this.setNeighbors(neighborhood);
   }
 
   public List<int[]> getNeigbors() {
@@ -21,7 +22,7 @@ public class Neighborhood {
     return this.name;
   }
 
-  public void setNeigbors(String neigborhood) {
+  public void setNeighbors(String neigborhood) {
     for (int index = 0, i = -1, j = -1; index < neigborhood.length(); index++) {
 
       if (i == 0 && j == 0) {
