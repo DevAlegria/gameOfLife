@@ -3,33 +3,30 @@ import java.util.*;
 public class App {
     public static void main(String[] args) throws InterruptedException {
         UserInterface ui = new UserInterface();
-        ConfigGoL game = new ConfigGoL();
-        game.setConfig();
-
-        String[] selectedNeigborhod = Params.neighborhoods[game.getNeighborhood()];
-        Neigborhood neigborhood = new Neigborhood(selectedNeigborhod[0]);
-        neigborhood.setNeigbors(selectedNeigborhod[1]);
+        ConfigGoL configGoL = new ConfigGoL();
+        configGoL.setConfig();
 
         List<Generation> generationsList = new ArrayList<>();
         Generation generation = new Generation(null);
-        generation.createStartGeneration(game.getWidth(), game.getHeight(), game.getPopulation());
+        generation.createStartGeneration(configGoL.getWidth(), configGoL.getHeight(), configGoL.getPopulation());
         generationsList.add(generation);
-
-        System.out.println(generation.getGeneration());
+        ui.print(generation.getGeneration());
 
         int i = 0;
-        while (i < game.getGenerations() || game.getGenerations() == 0) {
-            Thread.sleep(game.getSpeed());
+        while (i < configGoL.getGenerations() || configGoL.getGenerations() == 0) {
+            Thread.sleep(configGoL.getSpeed());
             Generation nextGeneration = new Generation(
                     generationsList.get(generationsList.size() - 1).getGenerationArray());
 
-            nextGeneration.getNextGeneration(neigborhood);
+            nextGeneration.getNextGeneration(configGoL.getNeighborhood());
             generationsList.add(nextGeneration);
-            ui.printState(nextGeneration.countLives(), game.getWidth() + "x" + game.getHeight(), i + 1,
-                    game.getGenerations(), game.getSpeed(),
-                    game.getNeighborhood());
+            ui.printSummaryStatus(nextGeneration.countLives(), configGoL.getWidth() + "x" + configGoL.getHeight(),
+                    i + 1,
+                    configGoL.getGenerations(), configGoL.getSpeed(),
+                    configGoL.getNeighborhood());
             ui.print(nextGeneration.getGeneration());
-            if(nextGeneration.countLives() == 0) break;
+            if (nextGeneration.countLives() == 0)
+                break;
             i++;
         }
     }

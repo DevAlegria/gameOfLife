@@ -9,7 +9,7 @@ public class Generation {
     this.generation = generation;
   }
 
-  public void getNextGeneration(Neigborhood neigborhood) {
+  public void getNextGeneration(Neighborhood neigborhood) {
     boolean[][] nextGeneration = new boolean[this.generation.length][this.generation[0].length];
 
     for (int i = 0; i < this.generation.length; i++) {

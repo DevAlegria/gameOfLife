@@ -1,11 +1,11 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Neigborhood {
+public class Neighborhood {
   private List<int[]> neighbors = new ArrayList<>();
   private String name = "No Name";
 
-  Neigborhood(String name) {
+  Neighborhood(String name) {
     this.name = name;
   }
 

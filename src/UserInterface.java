@@ -40,23 +40,24 @@ public class UserInterface {
     return "-2";
   }
 
-  public void printStatus(int width, int height, int generations, int speed, int neighborhood, String population) {
+  public void printStatus(int width, int height, int generations, int speed, Neighborhood neighborhood,
+      String population) {
     System.out.println("Intial Status App");
     this.printVariableStatus(" > Width", width, false, null);
     this.printVariableStatus(" > height", height, false, null);
     this.printVariableStatus(" > Generations", generations, generations == 0, "Infinity");
     this.printVariableStatus(" > Speed", speed, false, null);
-    this.printVariableStatus(" > Neighborhood", neighborhood, generations >= 0,
-        Params.getNeighborhoodName(neighborhood >= 0 ? neighborhood : 0));
+    this.print(" > Neighborhood" + neighborhood.getName());
     this.printPopulationStatus(population);
   }
 
-  public void printState(int lives, String board, int currentGeneration, int generations, int speed, int neighborhood) {
+  public void printSummaryStatus(int lives, String board, int currentGeneration, int generations, int speed,
+      Neighborhood neighborhood) {
     System.out.println("STATUS");
     System.out.println(
         "Lives: " + lives + "\tGeneration: " + currentGeneration + (generations > 0 ? " of " + generations : ""));
     System.out.println("Board: " + board + "\tSpeed: " + speed);
-    System.out.println("Neigborhood: " + Params.getNeighborhoodName(neighborhood));
+    System.out.println("Neigborhood: " + neighborhood.getName());
     System.out.println();
   }
 

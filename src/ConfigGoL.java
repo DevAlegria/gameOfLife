@@ -1,30 +1,31 @@
 import java.util.Random;
 
 public class ConfigGoL {
-  private int width, height, generations, speed, neighborhood;
+  private int width, height, generations, speed, neighborhood2;
   private String population;
+  private Neighborhood neighborhood;
 
   public void setConfig() {
     UserInterface ui = new UserInterface();
     this.width = ui.inputInt("Enter the width of the GoL board [10, 20, 40, 80] > ");
-    this.width = Params.verifyWidth(this.width);
+    this.width = Verifier.verifyWidth(generations);
 
     this.height = ui.inputInt("Enter the height of the Gol Board [10, 20, 40] > ");
-    this.height = Params.verifyHeight(this.height);
+    this.height = Verifier.verifyHeight(this.height);
 
     this.generations = ui.inputInt("Enter the number of generations: ");
-    this.generations = Params.verifyGenerations(this.generations);
+    this.generations = Verifier.verifyGenerations(this.generations);
 
     this.speed = ui.inputInt("Enter the speed between 250 to 1000 milliseconds: ");
-    this.speed = Params.verifySpeed(this.speed);
+    this.speed = Verifier.verifySpeed(this.speed);
 
-    this.neighborhood = ui.inputInt("Enter the neighborhood: ");
-    this.neighborhood = Params.verifyNeighborhood(this.neighborhood);
+    this.neighborhood2 = ui.inputInt("Enter the neighborhood2: ");
+    this.neighborhood2 = Verifier.verifyNeighborhood(this.neighborhood2);
 
     this.population = ui.inputPopulation();
-    this.population = Params.verifyPopulation(this.population, this.width, this.height);
+    this.population = Verifier.verifyPopulation(this.population, this.width, this.height);
     System.out.println(population);
-    ui.printStatus(this.width, this.height, this.generations, this.speed, this.neighborhood, this.population);
+    ui.printStatus(this.width, this.height, this.generations, this.speed, neighborhood, this.population);
 
     if (!isValidConfig()) {
       String selected = ui.inputString("[You have invalid values!]\n    Playing with default values? (Yes/No) > ")
@@ -36,6 +37,10 @@ public class ConfigGoL {
         ui.print("The configuration values are not valid\n    End Game");
         System.exit(0);
       }
+    } else {
+      String[] selectedNeigborhod = Constants.neighborhoods[this.neighborhood2];
+      this.neighborhood = new Neighborhood(selectedNeigborhod[0]);
+      this.neighborhood.setNeigbors(selectedNeigborhod[1]);
     }
 
   }
@@ -53,16 +58,17 @@ public class ConfigGoL {
     if (this.speed < 0)
       this.speed = 1000;
 
-    if (this.neighborhood < 0)
-      this.neighborhood = 0;
-
     if (this.population.equals("-1") || this.population.equals("-2")) {
       this.population = createRandomGrid(this.height > 0 ? height : 10, this.width > 0 ? width : 10);
     }
+
+    String[] selectedNeigborhod = Constants.neighborhoods[this.neighborhood2 < 0 ? 0 : this.neighborhood2];
+    this.neighborhood = new Neighborhood(selectedNeigborhod[0]);
+    this.neighborhood.setNeigbors(selectedNeigborhod[1]);
   }
 
   private boolean isValidConfig() {
-    if (this.width < 0 || this.height < 0 || this.neighborhood < 0 || this.speed < 0 || this.generations < 0
+    if (this.width < 0 || this.height < 0 || this.neighborhood2 < 0 || this.speed < 0 || this.generations < 0
         || this.population.equals("-1") || this.population.equals("-2"))
       return false;
     return true;
@@ -84,7 +90,7 @@ public class ConfigGoL {
     return this.speed;
   }
 
-  public int getNeighborhood() {
+  public Neighborhood getNeighborhood() {
     return this.neighborhood;
   }
 
