@@ -8,7 +8,7 @@ public class ConfigGoL {
   public void setConfig() {
     UserInterface ui = new UserInterface();
     this.width = ui.inputInt("Enter the width of the GoL board [10, 20, 40, 80] > ");
-    this.width = Verifier.verifyWidth(generations);
+    this.width = Verifier.verifyWidth(this.width);
 
     this.height = ui.inputInt("Enter the height of the Gol Board [10, 20, 40] > ");
     this.height = Verifier.verifyHeight(this.height);
