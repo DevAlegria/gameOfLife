@@ -84,6 +84,15 @@ public class Generation {
   }
 
   public int countLives() {
+    /*
+     * 1 1 1 0 1 1 1 0
+     * 0 0 0 1 0 0 0 1
+     * 1 1 1 0 1 1 1 0
+     * 0 0 0 1 0 0 0 1
+     * 1 1 1 0 1 1 1 0
+     * 0 0 0 1 0 0 0 1
+    */
+
     int lives = 0;
     for (int i = 0; i < generation.length / 2; i++) {
       for (int j = 0; j < generation[i].length / 2; j++) {

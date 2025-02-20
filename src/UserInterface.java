@@ -32,7 +32,7 @@ public class UserInterface {
       return "-1";
     }
 
-    if (input.matches("[01#]+")) {
+    if (input.equals("rnd") || input.matches("[01#]+")) {
       return input;
     }
     return "-2";

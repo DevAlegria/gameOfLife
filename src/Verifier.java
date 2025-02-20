@@ -44,7 +44,7 @@ public class Verifier {
   }
 
   public static String verifyPopulation(String value, int width, int height) {
-    if (value.equals("-1") || value.equals("-2"))
+    if (value.equals("-1") || value.equals("-2") ||value.equals("rnd"))
       return value;
 
     String[] rows = value.split("#");

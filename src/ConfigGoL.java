@@ -29,6 +29,7 @@ public class ConfigGoL {
 
     this.population = ui.inputPopulation();
     this.population = Verifier.verifyPopulation(this.population, this.width, this.height);
+
     ui.printStatus(this.width, this.height, this.generations, this.speed,
         neighborhood == null ? auxNeighborhood == -1 ? "No Present" : "Invalid" : neighborhood.getName(),
         this.population);
@@ -61,7 +62,7 @@ public class ConfigGoL {
     if (this.speed < 0)
       this.speed = 1000;
 
-    if (this.population.equals("-1") || this.population.equals("-2")) {
+    if (this.population.equals("-1") || this.population.equals("-2") || this.population.equals("rnd")) {
       this.population = createRandomGrid(this.height > 0 ? height : 10, this.width > 0 ? width : 10);
     }
 
