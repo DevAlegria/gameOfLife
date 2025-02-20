@@ -1,12 +1,10 @@
-import java.util.ArrayList;
-import java.util.List;
-
 public class Neighborhood {
-  private List<int[]> neighbors = new ArrayList<>();
+  private int[][] neighbors = new int[0][2];
   private String name = "No Name";
 
   Neighborhood(String name) {
     this.name = name;
+    neighbors[0][0] = 1;
   }
 
   Neighborhood(String name, String neighborhood) {
@@ -14,7 +12,7 @@ public class Neighborhood {
     this.setNeighbors(neighborhood);
   }
 
-  public List<int[]> getNeigbors() {
+  public int[][] getNeigbors() {
     return neighbors;
   }
 
@@ -25,28 +23,22 @@ public class Neighborhood {
   public void setNeighbors(String neigborhood) {
     for (int index = 0, i = -1, j = -1; index < neigborhood.length(); index++) {
 
-      if (i == 0 && j == 0) {
-        j++;
-        continue;
-      }
+      if (!(i == 0 && j == 0)) {
 
-      char celula = neigborhood.charAt(index);
-      switch (celula) {
-        case '0':
+        char celula = neigborhood.charAt(index);
+        if (celula == '0') {
           j++;
-          break;
-        case '1':
-          this.neighbors.add(new int[] { i, j });
+        } else if (celula == '1') {
+          this.setValueToNeighbors(new int[] { i, j });
           j++;
-          break;
-        case '#':
+        } else if (celula == '#') {
           j = -1;
           i++;
-          break;
+        }
 
-        default:
-          break;
-      }
+      } else
+        j++;
+
     }
   }
 
@@ -74,5 +66,16 @@ public class Neighborhood {
       strNeigbors.append("\n");
     }
     return strNeigbors.toString();
+  }
+
+  private void setValueToNeighbors(int[] array) {
+
+    int[][] auxNeighbors = new int[neighbors.length + 1][2];
+    for (int i = 0; i < this.neighbors.length; i++) {
+      auxNeighbors[i] = this.neighbors[i];
+    }
+    auxNeighbors[auxNeighbors.length - 1] = array;
+    neighbors = auxNeighbors;
+
   }
 }
