@@ -14,8 +14,8 @@ public class App {
         ui.print(generation.getGeneration());
 
         int i = 0;
-        while (i < configGoL.getGenerations() || configGoL.getGenerations() == 0
-                || generationsArray[generationsArray.length - 1].countLives() == 0) {
+        while ((i < configGoL.getGenerations() || configGoL.getGenerations() == 0)
+                && generationsArray[generationsArray.length - 1].countLives() != 0) {
             Thread.sleep(configGoL.getSpeed());
 
             Generation nextGeneration = new Generation(
