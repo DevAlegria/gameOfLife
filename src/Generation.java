@@ -62,7 +62,7 @@ public class Generation {
         startGeneration[i][j] = true;
         j++;
       } else if (celula == '#') {
-        j = -1;
+        j = 0;
         i++;
       }
     }
