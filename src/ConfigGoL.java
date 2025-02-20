@@ -3,7 +3,7 @@ import java.util.Random;
 public class ConfigGoL {
   private int width, height, generations, speed, auxNeighborhood;
   private String population;
-  private Neighborhood neighborhood; // auxNeighborhood
+  private Neighborhood neighborhood;
 
   public void setConfig() {
     UserInterface ui = new UserInterface();

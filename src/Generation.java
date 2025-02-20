@@ -18,16 +18,15 @@ public class Generation {
         boolean current = this.generation[i][j];
         int lives = 0;
         for (int[] neigbor : neigborhood.getNeigbors()) {
-          // [[-1,0],[-1,1]]
-
           int x = i + neigbor[0];
           int y = j + neigbor[1];
 
-          if (x < 0 || y < 0 || x >= this.generation.length || y >= this.generation[i].length)
-            continue;
-          boolean value = this.generation[x][y];
-          if (value)
-            lives += 1;
+          if (!(x < 0 || y < 0 || x >= this.generation.length || y >= this.generation[i].length)) {
+
+            boolean value = this.generation[x][y];
+            if (value)
+              lives += 1;
+          }
 
         }
 
@@ -54,23 +53,17 @@ public class Generation {
     int i = 0;
     int j = 0;
     for (int index = 0; index < population.length(); index++) {
-      char celula = population.charAt(index);
-      switch (celula) {
-        case '0':
-          startGeneration[i][j] = false;
-          j++;
-          break;
-        case '1':
-          startGeneration[i][j] = true;
-          j++;
-          break;
-        case '#':
-          j = 0;
-          i++;
-          break;
 
-        default:
-          break;
+      char celula = population.charAt(index);
+      if (celula == '0') {
+        startGeneration[i][j] = false;
+        j++;
+      } else if (celula == '1') {
+        startGeneration[i][j] = true;
+        j++;
+      } else if (celula == '#') {
+        j = -1;
+        i++;
       }
     }
     this.generation = startGeneration;

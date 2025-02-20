@@ -53,15 +53,16 @@ public class Neighborhood {
     for (int i = 0; i < neigborhood.length; i++) {
       strNeigbors.append("\t");
       for (int j = 0; j < neigborhood.length; j++) {
-        if (i == 1 && j == 1) {
+        if (!(i == 1 && j == 1)) {
+
+          if (neigborhood[i][j]) {
+            strNeigbors.append("x ");
+          } else {
+            strNeigbors.append("· ");
+          }
+        } else
           strNeigbors.append("o ");
-          continue;
-        }
-        if (neigborhood[i][j]) {
-          strNeigbors.append("x ");
-        } else {
-          strNeigbors.append("· ");
-        }
+
       }
       strNeigbors.append("\n");
     }
