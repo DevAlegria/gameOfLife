@@ -20,7 +20,7 @@ public class Neighborhood {
     return this.name;
   }
 
-  public void setNeighbors(String neigborhood) {
+  private void setNeighbors(String neigborhood) {
     for (int index = 0, i = -1, j = -1; index < neigborhood.length(); index++) {
 
       if (!(i == 0 && j == 0)) {
@@ -29,7 +29,7 @@ public class Neighborhood {
         if (celula == '0') {
           j++;
         } else if (celula == '1') {
-          this.setValueToNeighbors(new int[] { i, j });
+          this.addValueToNeighbors(new int[] { i, j });
           j++;
         } else if (celula == '#') {
           j = -1;
@@ -68,7 +68,7 @@ public class Neighborhood {
     return strNeigbors.toString();
   }
 
-  private void setValueToNeighbors(int[] array) {
+  private void addValueToNeighbors(int[] array) {
 
     int[][] auxNeighbors = new int[neighbors.length + 1][2];
     for (int i = 0; i < this.neighbors.length; i++) {
