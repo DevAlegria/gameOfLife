@@ -10,12 +10,10 @@ public class UserInterface {
     if (input.isEmpty()) {
       return -1;
     } else {
-      try {
-        int value = Integer.parseInt(input);
-        return value;
-      } catch (NumberFormatException e) {
+      if (input.matches("-?\\d+")) {
+        return Integer.parseInt(input);
+      } else
         return -2;
-      }
     }
   }
 
