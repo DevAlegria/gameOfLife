@@ -48,6 +48,17 @@ public class Generation {
     this.generation = nextGeneration;
   }
 
+  private boolean applyRules(boolean current, int lives) {
+    if (current) {
+      if (lives > 3 || lives < 2) {
+        return false;
+      }
+    } else if (lives == 3)
+      return true;
+
+    return current;
+  }
+
   public void createStartGeneration(int width, int height, String population) {
     boolean[][] startGeneration = new boolean[height][width];
     int i = 0;
@@ -84,14 +95,6 @@ public class Generation {
   }
 
   public int countLives() {
-    /*
-     * 1 1 1 0 1 1 1 0
-     * 0 0 0 1 0 0 0 1
-     * 1 1 1 0 1 1 1 0
-     * 0 0 0 1 0 0 0 1
-     * 1 1 1 0 1 1 1 0
-     * 0 0 0 1 0 0 0 1
-    */
 
     int lives = 0;
     for (int i = 0; i < generation.length / 2; i++) {

@@ -33,6 +33,9 @@ public class ConfigGoL {
     ui.printStatus(this.width, this.height, this.generations, this.speed,
         neighborhood == null ? auxNeighborhood == -1 ? "No Present" : "Invalid" : neighborhood.getName(),
         this.population);
+    System.out.println(this.population.equals("rnd"));
+    if (this.population.equals("rnd"))
+      this.population = createRandomGrid(this.height > 0 ? height : 10, this.width > 0 ? width : 10);
 
     if (!isValidConfig()) {
       String selected = ui.inputString("[You have invalid values!]\n    Playing with default values? (Yes/No) > ")
@@ -72,10 +75,8 @@ public class ConfigGoL {
   }
 
   private boolean isValidConfig() {
-    if (this.width < 0 || this.height < 0 || this.auxNeighborhood < 0 || this.speed < 0 || this.generations < 0
-        || this.population.equals("-1") || this.population.equals("-2"))
-      return false;
-    return true;
+    return !(this.width < 0 || this.height < 0 || this.auxNeighborhood < 0 || this.speed < 0 || this.generations < 0
+        || this.population.equals("-1") || this.population.equals("-2"));
   }
 
   public int getWidth() {
